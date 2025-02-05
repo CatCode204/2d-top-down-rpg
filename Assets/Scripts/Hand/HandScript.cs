@@ -5,13 +5,15 @@ public class HandScript : MonoBehaviour
     private Transform _playerTrans;
     private Transform _trans;
 
+    private bool _ableRotateHand = true;
+
     private void Awake() {
         _playerTrans = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         _trans = GetComponent<Transform>();
     }
 
     private void Update() {
-        FacingMouseDirection();
+        if (_ableRotateHand) FacingMouseDirection();
     }
 
     private void FacingMouseDirection() {
@@ -22,5 +24,13 @@ public class HandScript : MonoBehaviour
             _trans.rotation = Quaternion.Euler(0,180,180 - angle);
         else
             _trans.rotation = Quaternion.Euler(0,0,angle);
+    }
+
+    public void EnableRotateHand() {
+        _ableRotateHand = true;
+    }
+
+    public void DisableRotateHand() {
+        _ableRotateHand = false;
     }
 }
