@@ -6,6 +6,10 @@ public class SwordScript : MonoBehaviour
     [SerializeField] private float _attackReloadTime = 2.0f;
     [SerializeField] private GameObject _swordObject;
     [SerializeField] private GameObject _handObject;
+    [SerializeField] private GameObject _hitboxObject;
+    
+    [Header("Info")]
+    [SerializeField] private float _meanDamge = 23;
 
     private HandScript _handScript;
 
@@ -42,5 +46,9 @@ public class SwordScript : MonoBehaviour
     public void SetHandObject(GameObject handObject) {
         _handObject = handObject;
         _handScript = _handObject.GetComponent<HandScript>();
+    }
+
+    public void Damge(GameObject enemy) {
+        Debug.Log($"Damge enemy {enemy.name} {_meanDamge}");
     }
 }
